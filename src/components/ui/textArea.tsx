@@ -1,0 +1,64 @@
+
+import { cn } from "@/lib/utils";
+import {  useState } from "react";
+
+type ITextInput = {
+  label?: string;
+  onChange: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  currentValue: string;
+  placeHolder: string;
+  className?: string;
+  required?: boolean;
+  row?: number;
+  htmlFor?: string;
+  id?: string;
+};
+
+const TextArea = ({
+  label,
+  onChange,
+  currentValue,
+  placeHolder,
+  className,
+  required,
+  row,
+  id,
+}: ITextInput) => {
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
+  
+  return (
+    <div className="flex flex-col gap-2 relative">
+      <label
+        htmlFor={id || "input-box"}
+        className={`absolute text-sm text-bold text-gray-200 transform transition-all ${
+          isFocused || currentValue
+            ? "top-0 scale-75 -translate-y-2 bg-white"
+            : "top-3.5 scale-100 translate-y-0"
+        } peer-focus:text-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0   peer-focus:absolute peer-focus:z-10 pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate px-3 peer-focus:pt-0 leading-[1.6] text-gray-400 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-gray-700 peer-focus:bg-white`}
+      >
+        {label}
+      </label>
+      <textarea
+        id="text-box"
+        className={cn("block py-3 px-0 w-full text-lg bg-transparent font-primary border-2 border-primary appearance-none rounded-md focus:outline-none focus:ring-0 focus:border-primary peer focus:border-t-1 pl-2",className)}
+        value={currentValue}
+        onChange={onChange}
+        placeholder={placeHolder}
+        required={required ?? false}
+        rows={row ?? 3}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+      />
+    </div>
+  );
+};
+
+export default TextArea;
