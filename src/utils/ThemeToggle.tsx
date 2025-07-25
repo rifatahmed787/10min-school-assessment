@@ -20,7 +20,7 @@ export const ThemeToggle = () => {
       <button
         onClick={() => handleClick("light")}
         className={clsx(
-          "px-3 py-2 rounded-full transition-all duration-300 flex items-center justify-center",
+          "px-3 py-1.5 rounded-full transition-all duration-300 flex items-center justify-center",
           active === "light"
             ? "bg-amber-100 text-amber-600 shadow-sm"
             : "text-gray-500 hover:text-amber-500 dark:hover:text-amber-400"
@@ -36,7 +36,7 @@ export const ThemeToggle = () => {
       <button
         onClick={() => handleClick("dark")}
         className={clsx(
-          "px-3 py-2 rounded-full transition-all duration-300 flex items-center justify-center",
+          "px-3 py-1.5 rounded-full transition-all duration-300 flex items-center justify-center",
           active === "dark"
             ? "bg-indigo-900 text-indigo-200 shadow-sm"
             : "text-gray-500 hover:text-indigo-400 dark:hover:text-indigo-300"
