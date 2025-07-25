@@ -1,3 +1,5 @@
+import PublicHeader from "@/components/shared/PublicHeader";
+
 export default function MainLayout({
   children,
 }: {
@@ -5,6 +7,7 @@ export default function MainLayout({
 }) {
   return (
     <>
+      <PublicHeader/>
       <div className="min-h-screen">{children}</div>
     </>
   );
