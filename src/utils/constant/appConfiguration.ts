@@ -16,7 +16,8 @@ interface ICompanyDetails {
   hotline: string;
   companyCode: string;
   baseUrl: string;
-  favicon: string;
+  icon: string;
+  loader:string;
   sidebarLogo: string;
   progressMessage: string;
   worldBanner:string;
@@ -37,7 +38,8 @@ export const appConfiguration: ICompanyDetails = {
   netBanner:"/net.svg",
   companyCode: "__2.0__",
   baseUrl: "https://fashion.vercel.app/api/v1",
-  favicon: "/trendy.png",
+  icon: "/10min.png",
+  loader:"/10min.webp",
   sidebarLogo: "/trendy.svg",
   version: "2.0",
   progressMessage:

@@ -1,20 +1,18 @@
-import React from "react";
+import Image from "next/image";
+import { appConfiguration } from "@/utils/constant/appConfiguration";
 
 const Loader = () => {
   return (
-    <section className="flex items-center justify-center min-h-screen">
-      <div className="terminal-loader">
-        <div className="terminal-header">
-          <div className="terminal-title">Status</div>
-          <div className="terminal-controls">
-            <div className="control close animate-pulse"></div>
-            <div className="control minimize animate-bounce"></div>
-            <div className="control maximize animate-pulse"></div>
-          </div>
-        </div>
-        <div className="text">Please Wait...</div>
-      </div>
-    </section>
+    <div className="flex justify-center items-center min-h-screen">
+      <Image
+        width={800}
+        height={500}
+        priority
+        src={appConfiguration?.loader}
+        alt="10min-school-loader"
+        className="w-20 h-20 animate-pulse"
+      />
+    </div>
   );
 };
 
