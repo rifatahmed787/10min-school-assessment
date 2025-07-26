@@ -1,11 +1,10 @@
 "use client";
 import { appConfiguration } from "@/utils/constant/appConfiguration";
 import { content } from "@/utils/constant/footerContent";
+import { APP_IMAGES } from "@/utils/constant/images";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import googlePlay from "../../assets/googleplay.jpg"
-import appStore from "../../assets/appstore.jpg"
 
 const Footer = () => {
   const { lang } = useParams() as { lang: "en" | "bn" };
@@ -35,7 +34,7 @@ const Footer = () => {
                 <Link href="#" className="flex flex-col items-center sm:items-start">
                   <span className="text-xs mb-1">{t.getOnGooglePlay}</span>
                   <Image
-                    src={googlePlay}
+                    src={APP_IMAGES.googlePlayBadge}
                     alt="Google Play"
                     className="h-10 w-auto min-w-[120px]"
                     width={135}
@@ -45,7 +44,7 @@ const Footer = () => {
                 <Link href="#" className="flex flex-col items-center sm:items-start">
                   <span className="text-xs mb-1">{t.downloadOnAppStore}</span>
                   <Image
-                    src={appStore}
+                    src={APP_IMAGES.appStoreBadge}
                     alt="App Store"
                     className="h-10 w-auto min-w-[120px]"
                     width={135}

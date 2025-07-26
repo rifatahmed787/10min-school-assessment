@@ -1,6 +1,5 @@
 "use client"
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
+import React from "react";
 import { cn } from "@/lib/utils";
 
 export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
@@ -8,7 +7,6 @@ export interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   variant?: "default" | "muted" | "highlight";
   position?: "left" | "center" | "right";
-  animated?: boolean;
   bordered?: boolean;
 }
 
@@ -20,48 +18,12 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       variant = "default",
       className = "",
       position = "left",
-      animated = false,
       bordered = false,
       ...props
     },
     ref
   ) => {
     const Tag = as;
-    const textRef = useRef<HTMLHeadingElement>(null);
-
-    useEffect(() => {
-      if (!animated || !textRef.current) return;
-
-      const textEl = textRef.current;
-      const text = textEl.textContent || "";
-      textEl.innerHTML = text
-        .split("")
-        .map((char) =>
-          /[^\x00-\x80]|\w/.test(char)
-            ? `<span class="_text3">${char}</span>`
-            : char
-        )
-        .join("");
-
-      const spans = textEl.querySelectorAll("._text3");
-      const tl = gsap.timeline({ repeat: -1 });
-
-      tl.from(spans, {
-        duration: 0.5,
-        opacity: 0,
-        x: 40,
-        ease: "power1.out",
-        stagger: 0.1,
-        delay: 1.2,
-      }).to(spans, {
-        duration: 0.5,
-        opacity: 0,
-        x: -40,
-        ease: "power1.out",
-        stagger: 0.1,
-        delay: 1.5,
-      });
-    }, [animated]);
 
     const baseStyles = "font-bold leading-tight";
 
@@ -78,20 +40,19 @@ const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
     };
 
     const sizeStyles = {
-      h1: "text-4xl md:text-5xl font-bold",
-      h2: "text-3xl md:text-4xl font-bold",
-      h3: "text-2xl md:text-3xl font-semibold",
-      h4: "text-xl md:text-2xl font-semibold",
+      h1: "text-4xl md:text-5xl",
+      h2: "text-3xl md:text-4xl",
+      h3: "text-2xl md:text-3xl",
+      h4: "text-xl md:text-2xl",
       h5: "text-lg md:text-xl",
       h6: "text-base md:text-lg",
     };
 
-    const borderStyles =
-      "relative after:absolute after:content-[''] after:bg-primary after:w-full after:h-1 after:bottom-0 after:left-0 inline-block";
+    const borderStyles = "relative after:absolute after:content-[''] after:bg-primary after:w-full after:h-1 after:bottom-0 after:left-0 inline-block";
 
     return (
       <Tag
-        ref={animated ? textRef : ref}
+        ref={ref}
         className={cn(
           baseStyles,
           variantStyles[variant],
