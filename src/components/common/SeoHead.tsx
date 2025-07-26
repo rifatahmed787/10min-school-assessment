@@ -1,3 +1,4 @@
+import { appConfiguration } from "@/utils/constant/appConfiguration";
 import Head from "next/head";
 
 interface SeoHeadProps {
@@ -8,6 +9,7 @@ interface SeoHeadProps {
   image?: string;
   ogType?: string;
   noIndex?: boolean;
+  lang?: "en" | "bn";
 }
 
 const SeoHead = ({
@@ -15,11 +17,13 @@ const SeoHead = ({
   description,
   keywords = "online education, Bangladesh, 10Minute School",
   url,
-  image = "/default-og-image.jpg",
+  image = appConfiguration.logo,
   ogType = "website",
   noIndex = false,
+  lang = "en",
 }: SeoHeadProps) => {
   const fullTitle = `${title} | 10Minute School`;
+  const locale = lang === "bn" ? "bn_BD" : "en_US";
 
   return (
     <Head>
@@ -27,6 +31,7 @@ const SeoHead = ({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta property="og:locale" content={locale} />
 
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
@@ -45,6 +50,7 @@ const SeoHead = ({
       {/* SEO Controls */}
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
       <link rel="canonical" href={url} />
+      <link rel="alternate" hrefLang={locale} href={url} />
       <link rel="icon" href="/favicon.ico" />
     </Head>
   );

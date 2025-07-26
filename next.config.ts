@@ -2,9 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: [
-      "res.cloudinary.com",
-    ],
+    domains: ['cdn.10minuteschool.com']
   },
   webpack: (config: {
     module: {
