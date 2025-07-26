@@ -6,6 +6,7 @@ import { useState } from "react";
 import { FaGlobe } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import { RiArrowDropDownFill } from "react-icons/ri";
+import { LiaFlagUsaSolid } from "react-icons/lia";
 
 export default function LanguageSwitcher() {
   const router = useRouter();
@@ -14,7 +15,7 @@ export default function LanguageSwitcher() {
   const currentLang = segments[1] || "en";
   
   const languages = [
-    { label: "EN", value: "en", flag: "🇬🇧" },
+    { label: "EN", value: "en", flag: <LiaFlagUsaSolid /> },
     { label: "BN", value: "bn", flag: "🇧🇩" }
   ];
 
