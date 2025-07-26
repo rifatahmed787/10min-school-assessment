@@ -5,6 +5,8 @@ import { APP_IMAGES } from "@/utils/constant/images";
 import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import Paragraph from "../common/Paragraph";
+import Heading from "../common/Heading";
 
 const Footer = () => {
   const { lang } = useParams() as { lang: "en" | "bn" };
@@ -15,7 +17,6 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
-          
           <div className="col-span-2 lg:col-span-1 flex flex-col items-center sm:items-start gap-6">
             <Link href="/" className="mb-2">
               <Image
@@ -29,9 +30,12 @@ const Footer = () => {
             </Link>
 
             <div className="w-full">
-              <p className="text-sm mb-3 text-center sm:text-left">{t.downloadApp}</p>
-              <div className="flex  gap-3 justify-center sm:justify-start">
-                <Link href="#" className="flex flex-col items-center sm:items-start">
+              <Paragraph className="text-white">{t.downloadApp}</Paragraph>
+              <div className="flex  gap-3 justify-center sm:justify-start mt-3">
+                <Link
+                  href="#"
+                  className="flex flex-col items-center sm:items-start"
+                >
                   <span className="text-xs mb-1">{t.getOnGooglePlay}</span>
                   <Image
                     src={APP_IMAGES.googlePlayBadge}
@@ -41,7 +45,10 @@ const Footer = () => {
                     height={40}
                   />
                 </Link>
-                <Link href="#" className="flex flex-col items-center sm:items-start">
+                <Link
+                  href="#"
+                  className="flex flex-col items-center sm:items-start"
+                >
                   <span className="text-xs mb-1">{t.downloadOnAppStore}</span>
                   <Image
                     src={APP_IMAGES.appStoreBadge}
@@ -57,7 +64,9 @@ const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">{t.company}</h3>
+            <Heading as="h4" variant="default" className="text-white">
+              {t.company}
+            </Heading>
             <ul className="space-y-2">
               {[
                 t.career,
@@ -65,7 +74,7 @@ const Footer = () => {
                 t.joinAffiliate,
                 t.privacy,
                 t.refund,
-                t.terms
+                t.terms,
               ].map((item, index) => (
                 <li key={index}>
                   <Link href="#" className="hover:text-blue-300 text-sm">
@@ -78,7 +87,9 @@ const Footer = () => {
 
           {/* Other Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">{t.others}</h3>
+            <Heading as="h4" variant="default" className="text-white">
+              {t.others}
+            </Heading>
             <ul className="space-y-2">
               {[
                 t.blog,
@@ -86,7 +97,7 @@ const Footer = () => {
                 t.freeNotes,
                 t.jobCourses,
                 t.verifyCert,
-                t.freeDownload
+                t.freeDownload,
               ].map((item, index) => (
                 <li key={index}>
                   <Link href="#" className="hover:text-blue-300 text-sm">
@@ -99,7 +110,10 @@ const Footer = () => {
 
           {/* Contact Info - Hidden on mobile, shown from tablet up */}
           <div className="hidden sm:block">
-            <h3 className="text-lg font-semibold mb-4">{t.contact}</h3>
+            <Heading as="h4" variant="default" className="text-white">
+              {t.contact}
+            </Heading>
+
             <ul className="space-y-2 text-sm">
               <li>{t.callUs}</li>
               <li>{t.whatsapp}</li>
@@ -111,7 +125,9 @@ const Footer = () => {
 
         {/* Mobile Contact Info - Only shown on mobile */}
         <div className="sm:hidden mb-6">
-          <h3 className="text-lg font-semibold mb-4">{t.contact}</h3>
+          <Heading as="h4" variant="default" className="text-white">
+            {t.contact}
+          </Heading>
           <ul className="space-y-2 text-sm">
             <li>{t.callUs}</li>
             <li>{t.whatsapp}</li>
