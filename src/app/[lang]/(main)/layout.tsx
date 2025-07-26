@@ -1,3 +1,4 @@
+import Footer from "@/components/shared/Footer";
 import PublicHeader from "@/components/shared/PublicHeader";
 import { Metadata } from "next";
 
@@ -31,6 +32,7 @@ export default function MainLayout({
     <>
       <PublicHeader/>
       <div className="min-h-screen">{children}</div>
+      <Footer/>
     </>
   );
 }
