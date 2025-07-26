@@ -1,4 +1,4 @@
-import PageWrapper from "@/components/common/PageWrapper";
+import { appConfiguration } from "@/utils/constant/appConfiguration";
 import { Metadata } from "next";
 import React from "react";
 export const metadata: Metadata = {
@@ -31,8 +31,3 @@ export const metadata: Metadata = {
   },
 };
 
-const HomePage = () => {
-  return <PageWrapper className="py-8 space-y-6">hellow</PageWrapper>;
-};
-
-export default HomePage;
