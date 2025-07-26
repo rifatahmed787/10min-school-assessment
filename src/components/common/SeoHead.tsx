@@ -3,32 +3,49 @@ import Head from "next/head";
 interface SeoHeadProps {
   title: string;
   description: string;
-  keywords: string;
+  keywords?: string;
   url: string;
-  image: string;
+  image?: string;
+  ogType?: string;
+  noIndex?: boolean;
 }
 
-const SeoHead: React.FC<SeoHeadProps> = ({
+const SeoHead = ({
   title,
   description,
-  keywords,
+  keywords = "online education, Bangladesh, 10Minute School",
   url,
-  image,
-}) => {
+  image = "/default-og-image.jpg",
+  ogType = "website",
+  noIndex = false,
+}: SeoHeadProps) => {
+  const fullTitle = `${title} | 10Minute School`;
+
   return (
     <Head>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>{title}</title>
+      <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <meta property="og:site_name" content="Resdium Digital" />
-      <meta property="og:title" content={title} key="og-title" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      {/* Open Graph */}
+      <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
       <meta property="og:url" content={url} />
-      <meta property="og:type" content="website" />
-      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+      <meta property="og:type" content={ogType} />
+      <meta property="og:image" content={image} />
+      <meta property="og:site_name" content="10Minute School" />
+
+      {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
+
+      {/* SEO Controls */}
+      {noIndex && <meta name="robots" content="noindex, nofollow" />}
       <link rel="canonical" href={url} />
+      <link rel="icon" href="/favicon.ico" />
     </Head>
   );
 };
