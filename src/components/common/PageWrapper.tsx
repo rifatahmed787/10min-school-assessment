@@ -15,7 +15,7 @@ export default function PageWrapper({
   return (
     <>
       {/* Main Wrapper */}
-      <main className="min-h-screen bg-gray-50">
+      <main className="min-h-screen bg-gray-50 dark:bg-background">
         {/* Content Container */}
         <section
           className={`mx-auto ${fullWidth ? 'w-full' : 'max-w-7xl'} px-3 sm:px-4 lg:px-5 ${

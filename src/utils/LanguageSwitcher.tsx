@@ -83,7 +83,7 @@ export default function LanguageSwitcher() {
                   )}
                 >
                   <span className="text-lg">{flag}</span>
-                  <span>{label}</span>
+                  <span className="text-lg">{label}</span>
                   {currentLang === value && (
                     <span className="ml-auto text-primary">✓</span>
                   )}
