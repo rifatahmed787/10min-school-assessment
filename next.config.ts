@@ -46,13 +46,13 @@ const nextConfig = {
     return [
       {
         source: "/",
-        destination: "/en/home",
+        destination: "/en/courses",
         permanent: false,
       },
 
       {
         source: "/bn",
-        destination: "/bn/home",
+        destination: "/bn/courses",
         permanent: false,
       },
     ];
