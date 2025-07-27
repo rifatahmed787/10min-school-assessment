@@ -17,9 +17,9 @@ export interface INavigationLinks {
 
 const rootLinks: INavigationLinks = {
   icon: LuContact,
-  label: { en: "Home", bn: "হোম" },
+  label: { en: "Courses", bn: "কোর্সসমূহ" },
   key: "home",
-  href: "/home",
+  href: "/courses",
 };
 
 const admissionLinks: INavigationLinks = {

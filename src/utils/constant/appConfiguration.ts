@@ -21,6 +21,7 @@ interface ICompanyDetails {
   sidebarLogo: string;
   progressMessage: string;
   version: string;
+  url:string;
 }
 
 export const appConfiguration: ICompanyDetails = {
@@ -37,6 +38,7 @@ export const appConfiguration: ICompanyDetails = {
   hotline: "000000000000",
   companyCode: "__2.0__",
   baseUrl: "https://api.10minuteschool.com/discovery-service/api/v1/",
+  url: "https://10min-school-assessment.vercel.app",
   logo: "/10min.png",
   loader: "/10min.webp",
   sidebarLogo: "/trendy.svg",
