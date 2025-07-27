@@ -1,17 +1,12 @@
 import Heading from "@/components/common/Heading";
+import { Language } from "@/types/product";
+import { FeaturesSection } from "@/types/section";
 import { FC } from "react";
 
 
-
-interface FeatureExplanation {
-  title: string;
-  description: string;
-  icon?: string;
-}
-
 interface CourseFeaturesProps {
-  features: FeatureExplanation[];
-  lang: "en" | "bn";
+  features: FeaturesSection['values'];
+  lang: Language;
 }
 
 const CourseFeatures: FC<CourseFeaturesProps> = ({ features, lang }) => {

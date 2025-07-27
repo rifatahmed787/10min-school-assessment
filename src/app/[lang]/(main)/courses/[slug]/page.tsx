@@ -6,8 +6,13 @@ import CourseDescription from "@/components/pages/CourseDetails/CourseDescriptio
 import CourseFeatures from "@/components/pages/CourseDetails/CourseFeatures";
 import CTAGroup from "@/components/pages/CourseDetails/CTAGroup";
 import DetailsHero from "@/components/pages/CourseDetails/DetailsHero";
+import LearningOutcomes from "@/components/pages/CourseDetails/LearningOutcomes";
 import Trailor from "@/components/pages/CourseDetails/Trailor";
-import { Section } from "@/types/section";
+import {
+  isAboutSection,
+  isFeaturesSection,
+  isPointersSection,
+} from "@/types/section";
 import { appConfiguration } from "@/utils/constant/appConfiguration";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -28,6 +33,10 @@ const CourseDetails = async ({
     const productData = product.data;
     const seoData = productData.seo;
 
+    const pointersSection = productData.sections.find(isPointersSection);
+    const featuresSection = productData.sections.find(isFeaturesSection);
+    const aboutSection = productData.sections.find(isAboutSection);
+
     return (
       <PageWrapper>
         <SeoHead
@@ -47,22 +56,18 @@ const CourseDetails = async ({
             {/* Title */}
             <DetailsHero title={productData.title} lang={lang} />
 
-            {/* Course Exclusive Features */}
-            <CourseFeatures
-              features={
-                productData.sections.find(
-                  (s:Section) => s.type === "features"
-                )?.values || []
-              }
+            <LearningOutcomes
+              outcomes={pointersSection?.values || []}
               lang={lang}
             />
 
-            {/* Course Details */}
+            <CourseFeatures
+              features={featuresSection?.values || []}
+              lang={lang}
+            />
+
             <CourseDescription
-              details={
-                productData.sections.find((s:Section) => s.type === "about")?.values ||
-                []
-              }
+              details={aboutSection?.values || []}
               lang={lang}
             />
           </div>

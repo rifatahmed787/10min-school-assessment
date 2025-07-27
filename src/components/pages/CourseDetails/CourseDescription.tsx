@@ -2,15 +2,12 @@
 import Heading from "@/components/common/Heading";
 import { FC } from "react";
 import DOMPurify from "dompurify";
-
-interface CourseDetail {
-  title: string;
-  description: string;
-}
+import { AboutSection } from "@/types/section";
+import { Language } from "@/types/product";
 
 interface CourseDescriptionProps {
-  details: CourseDetail[];
-  lang: "en" | "bn";
+  details: AboutSection['values'];
+  lang: Language;
 }
 
 const CourseDescription: FC<CourseDescriptionProps> = ({ details, lang }) => {
