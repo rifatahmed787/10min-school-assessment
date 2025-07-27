@@ -18,6 +18,15 @@ export type FeaturesSection = Section & {
   }>;
 };
 
+export type FeaturesExplanationsSection = Section & {
+  type: 'feature_explanations';
+  values: Array<{
+    title: string;
+    description: string;
+    icon?: string;
+  }>;
+};
+
 export type AboutSection = Section & {
   type: 'about';
   values: Array<{
@@ -33,6 +42,9 @@ export function isPointersSection(section: Section): section is PointersSection 
 
 export function isFeaturesSection(section: Section): section is FeaturesSection {
   return section.type === 'features';
+}
+export function isFeaturesExplanationsSection(section: Section): section is FeaturesExplanationsSection {
+  return section.type === 'feature_explanations';
 }
 
 export function isAboutSection(section: Section): section is AboutSection {

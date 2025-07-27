@@ -4,12 +4,14 @@ import SeoHead from "@/components/common/SeoHead";
 import CourseChecklist from "@/components/pages/CourseDetails/CourseChecklist";
 import CourseDescription from "@/components/pages/CourseDetails/CourseDescription";
 import CourseFeatures from "@/components/pages/CourseDetails/CourseFeatures";
+import CourseLayout from "@/components/pages/CourseDetails/CourseLayout";
 import CTAGroup from "@/components/pages/CourseDetails/CTAGroup";
 import DetailsHero from "@/components/pages/CourseDetails/DetailsHero";
 import LearningOutcomes from "@/components/pages/CourseDetails/LearningOutcomes";
 import Trailor from "@/components/pages/CourseDetails/Trailor";
 import {
   isAboutSection,
+  isFeaturesExplanationsSection,
   isFeaturesSection,
   isPointersSection,
 } from "@/types/section";
@@ -35,6 +37,7 @@ const CourseDetails = async ({
 
     const pointersSection = productData.sections.find(isPointersSection);
     const featuresSection = productData.sections.find(isFeaturesSection);
+    const featuresExplanationsSection = productData.sections.find(isFeaturesExplanationsSection);
     const aboutSection = productData.sections.find(isAboutSection);
 
     return (
@@ -55,14 +58,22 @@ const CourseDetails = async ({
           <div className="col-span-12 lg:col-span-7 space-y-8 min-h-[220vh]">
             {/* Title */}
             <DetailsHero title={productData.title} lang={lang} />
+            
+            
+            {/* How the course is laid out */}
+            <CourseLayout
+             features={featuresSection?.values || []}
+              lang={lang}
+            />
 
+             
             <LearningOutcomes
               outcomes={pointersSection?.values || []}
               lang={lang}
             />
 
             <CourseFeatures
-              features={featuresSection?.values || []}
+              features={featuresExplanationsSection?.values || []}
               lang={lang}
             />
 
