@@ -8,10 +8,9 @@ import Button from "../common/Button";
 interface Props {
   product: Product;
   lang: "en" | "bn";
-  className?: string;
 }
 
-export default function CourseCard({ product, lang, className = "" }: Props) {
+export default function CourseCard({ product, lang }: Props) {
    
   const thumbnail = product.media?.find(
     (m) =>
@@ -24,7 +23,7 @@ export default function CourseCard({ product, lang, className = "" }: Props) {
     : "";
 
   return (
-    <div className={`group relative flex flex-col h-full border border-gray-700 rounded-xl overflow-hidden bg-gray-800 hover:border-emerald-400 transition-all duration-300 ${className}`}>
+    <div className={`group relative flex flex-col h-full border border-gray-700 rounded-xl overflow-hidden bg-gray-800 hover:border-emerald-400 transition-all duration-300`}>
       <Link href={`/${lang}/courses/${product.slug}`} className="flex flex-col h-full">
         {/* Image with overlay effect */}
         <div className="relative h-48 overflow-hidden">

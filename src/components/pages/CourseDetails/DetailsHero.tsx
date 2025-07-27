@@ -6,10 +6,10 @@ interface Props {
   lang: "en" | "bn";
 }
 const DetailsHero = ({ product, lang }: Props) => {
-    console.log(product)
+    console.log(product, lang)
   return (
     <div>
-      
+      <h1>{product.title}</h1>
     </div>
   )
 }

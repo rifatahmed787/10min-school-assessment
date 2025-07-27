@@ -6,15 +6,12 @@ import { appConfiguration } from "@/utils/constant/appConfiguration";
 import { notFound } from "next/navigation";
 import React from "react";
 
-export type paramsType = Promise<{ slug: string; lang: "en" | "bn" }>;
-type Props = {
-  params: {
-    slug: string;
-    lang: "en" | "bn";
-  };
-};
-const CourseDetails = async ({ params }: Props) => {
-  const { slug, lang = "en" } = params;
+const CourseDetails = async ({
+  params: paramsPromise,
+}: {
+  params: Promise<{ slug: string; lang: "en" | "bn" }>;
+}) => {
+  const { slug, lang = "en" } = await paramsPromise;
 
   if (!slug) {
     notFound();
@@ -34,11 +31,13 @@ const CourseDetails = async ({ params }: Props) => {
           description={seoData.description}
           keywords={seoData.keywords.join(", ")}
           url={`${appConfiguration?.url}/${lang}/courses/${slug}`}
-          image={productData.media?.[0]?.resource_value || appConfiguration.logo}
+          image={
+            productData.media?.[0]?.resource_value || appConfiguration.logo
+          }
           lang={lang}
         />
         <div>
-            <DetailsHero product={productData} lang={lang} />
+          <DetailsHero product={productData} lang={lang} />
         </div>
       </PageWrapper>
     );
