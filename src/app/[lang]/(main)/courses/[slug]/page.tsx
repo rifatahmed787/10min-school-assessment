@@ -3,9 +3,11 @@ import PageWrapper from "@/components/common/PageWrapper";
 import SeoHead from "@/components/common/SeoHead";
 import CourseChecklist from "@/components/pages/CourseDetails/CourseChecklist";
 import CourseDescription from "@/components/pages/CourseDetails/CourseDescription";
+import CourseFeatures from "@/components/pages/CourseDetails/CourseFeatures";
 import CTAGroup from "@/components/pages/CourseDetails/CTAGroup";
 import DetailsHero from "@/components/pages/CourseDetails/DetailsHero";
 import Trailor from "@/components/pages/CourseDetails/Trailor";
+import { Section } from "@/types/section";
 import { appConfiguration } from "@/utils/constant/appConfiguration";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -45,11 +47,20 @@ const CourseDetails = async ({
             {/* Title */}
             <DetailsHero title={productData.title} lang={lang} />
 
-            {/* course description */}
+            {/* Course Exclusive Features */}
+            <CourseFeatures
+              features={
+                productData.sections.find(
+                  (s:Section) => s.type === "features"
+                )?.values || []
+              }
+              lang={lang}
+            />
+
             {/* Course Details */}
             <CourseDescription
               details={
-                productData.sections.find((s) => s.type === "about")?.values ||
+                productData.sections.find((s:Section) => s.type === "about")?.values ||
                 []
               }
               lang={lang}
