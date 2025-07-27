@@ -36,7 +36,7 @@ export const appConfiguration: ICompanyDetails = {
   phone: { en: "+880 1945518927", bn: "+৮৮০ ১৯৪৫৫১৮৯২৭" },
   hotline: "000000000000",
   companyCode: "__2.0__",
-  baseUrl: "https://fashion.vercel.app/api/v1",
+  baseUrl: "https://api.10minuteschool.com/discovery-service/api/v1/",
   logo: "/10min.png",
   loader: "/10min.webp",
   sidebarLogo: "/trendy.svg",

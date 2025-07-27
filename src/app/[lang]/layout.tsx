@@ -1,4 +1,3 @@
-// app/layout.tsx
 
 import { Amiri } from "next/font/google";
 import "./globals.css";

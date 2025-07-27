@@ -10,7 +10,7 @@ const Loader = () => {
         priority
         src={appConfiguration?.loader}
         alt="10min-school-loader"
-        className="w-20 h-20 animate-pulse"
+        className="w-fit h-fit animate-pulse"
       />
     </div>
   );

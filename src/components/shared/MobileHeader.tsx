@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FaBars, FaTimes, FaRegUser, FaSearch } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { usePathname, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { ThemeToggle } from "@/utils/ThemeToggle";
@@ -14,7 +14,6 @@ import { publicNavigationLinks } from "@/utils/constant/navigationLinks";
 
 const MobileNav = () => {
   const router = useRouter();
-  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");

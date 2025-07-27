@@ -1,4 +1,6 @@
+import Footer from "@/components/shared/Footer";
 import PublicHeader from "@/components/shared/PublicHeader";
+
 
 export default function MainLayout({
   children,
@@ -9,8 +11,8 @@ export default function MainLayout({
     <>
       <PublicHeader/>
       <div className="min-h-screen">{children}</div>
+      <Footer/>
     </>
   );
 }
 
-// pt-24 md:pt-[132px]
