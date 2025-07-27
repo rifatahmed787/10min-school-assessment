@@ -1,6 +1,13 @@
 
 import { Section } from './product';
 
+export type InstructorsSection = Section & {
+  type: 'pointers';
+  values: Array<{
+    text: string;
+    icon?: string;
+  }>;
+};
 export type PointersSection = Section & {
   type: 'pointers';
   values: Array<{
@@ -36,6 +43,10 @@ export type AboutSection = Section & {
 };
 
 // Type guard functions
+export function isInstructorsSection(section: Section): section is InstructorsSection {
+  return section.type === 'instructors';
+}
+
 export function isPointersSection(section: Section): section is PointersSection {
   return section.type === 'pointers';
 }

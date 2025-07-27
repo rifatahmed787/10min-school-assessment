@@ -4,6 +4,7 @@ import SeoHead from "@/components/common/SeoHead";
 import CourseChecklist from "@/components/pages/CourseDetails/CourseChecklist";
 import CourseDescription from "@/components/pages/CourseDetails/CourseDescription";
 import CourseFeatures from "@/components/pages/CourseDetails/CourseFeatures";
+import CourseInstructors from "@/components/pages/CourseDetails/CourseInstructors";
 import CourseLayout from "@/components/pages/CourseDetails/CourseLayout";
 import CTAGroup from "@/components/pages/CourseDetails/CTAGroup";
 import DetailsHero from "@/components/pages/CourseDetails/DetailsHero";
@@ -13,6 +14,7 @@ import {
   isAboutSection,
   isFeaturesExplanationsSection,
   isFeaturesSection,
+  isInstructorsSection,
   isPointersSection,
 } from "@/types/section";
 import { appConfiguration } from "@/utils/constant/appConfiguration";
@@ -35,6 +37,7 @@ const CourseDetails = async ({
     const productData = product.data;
     const seoData = productData.seo;
 
+    const instructorsSection = productData.sections.find(isInstructorsSection);
     const pointersSection = productData.sections.find(isPointersSection);
     const featuresSection = productData.sections.find(isFeaturesSection);
     const featuresExplanationsSection = productData.sections.find(isFeaturesExplanationsSection);
@@ -59,7 +62,12 @@ const CourseDetails = async ({
             {/* Title */}
             <DetailsHero title={productData.title} lang={lang} />
             
-            
+               {/* Instructors */}
+            <CourseInstructors 
+              instructors={instructorsSection?.values || []} 
+              lang={lang}
+            />
+
             {/* How the course is laid out */}
             <CourseLayout
              features={featuresSection?.values || []}
