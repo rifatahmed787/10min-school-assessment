@@ -35,49 +35,57 @@ const CourseDetails = async ({
 
   try {
     const product = await getProductBySlug(slug, lang);
-    
-    const productData = product.data;
-    const seoData = productData.seo;
 
-    const instructorsSection = productData.sections.find(isInstructorsSection);
-    const pointersSection = productData.sections.find(isPointersSection);
-    const featuresSection = productData.sections.find(isFeaturesSection);
-    const featuresExplanationsSection = productData.sections.find(isFeaturesExplanationsSection);
-    const aboutSection = productData.sections.find(isAboutSection);
+    const productData = product?.data;
+    const seoData = productData?.seo;
+
+    const instructorsSection = productData?.sections.find(isInstructorsSection);
+    const pointersSection = productData?.sections.find(isPointersSection);
+    const featuresSection = productData?.sections.find(isFeaturesSection);
+    const featuresExplanationsSection = productData?.sections.find(
+      isFeaturesExplanationsSection
+    );
+    const aboutSection = productData?.sections.find(isAboutSection);
 
     return (
       <PageWrapper>
         <SeoHead
-          title={seoData.title}
-          description={seoData.description}
-          keywords={seoData.keywords.join(", ")}
+          title={seoData?.title}
+          description={seoData?.description}
+          keywords={
+            Array.isArray(seoData?.keywords)
+              ? seoData.keywords.join(", ")
+              : "10minuite courses"
+          }
           url={`${appConfiguration?.url}/${lang}/courses/${slug}`}
           image={
-            productData.media?.[0]?.resource_value || appConfiguration.logo
+            productData?.media?.[0]?.resource_value || appConfiguration.logo
           }
           lang={lang}
         />
 
         <div className="grid grid-cols-12 gap-5 py-5 container mx-auto">
           {/* Left Column */}
-          <div className="col-span-12 lg:col-span-7 space-y-8 min-h-[220vh]">
+          <div className="col-span-12 lg:col-span-7 space-y-8">
             {/* Title */}
             <DetailsHero title={productData.title} lang={lang} />
-            
-            <CourseShortDescription details={productData?.description} lang={lang}/>
-           
-            <CourseInstructors 
-              instructors={instructorsSection?.values || []} 
+
+            <CourseShortDescription
+              details={productData?.description}
+              lang={lang}
+            />
+
+            <CourseInstructors
+              instructors={instructorsSection?.values || []}
               lang={lang}
             />
 
             {/* How the course is laid out */}
             <CourseLayout
-             features={featuresSection?.values || []}
+              features={featuresSection?.values || []}
               lang={lang}
             />
 
-             
             <LearningOutcomes
               outcomes={pointersSection?.values || []}
               lang={lang}

@@ -42,7 +42,7 @@ export default function PublicHeader() {
           <div className="flex items-center justify-between py-2">
             {/* Logo - Hidden on desktop (will show in nav center) */}
             <div>
-              <Link href={`/${lang}`}>
+              <Link href={`/`}>
                 <Image
                   src={appConfiguration?.logo}
                   alt="10minute-school-Logo"

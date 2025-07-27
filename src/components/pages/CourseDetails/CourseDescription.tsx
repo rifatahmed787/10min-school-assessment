@@ -17,16 +17,14 @@ const CourseDescription: FC<CourseDescriptionProps> = ({ details, lang }) => {
   // Step 1: Sanitize the HTML to prevent XSS
   const sanitized = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
 
-  // Step 2: Split by newline and wrap non-tag lines in <p>
   const withParagraphs = sanitized
     .split(/\n+/)
     .map((line) => {
       const trimmed = line.trim();
-      // If already a valid tag (e.g., <p>, <h1>, <ul>, etc.), leave it
       const isHtmlTag = /^<\/?(h[1-4]|p|ul|ol|li|strong|em|b|i|img|div|br)[\s>]/i.test(trimmed);
       return trimmed && !isHtmlTag ? `<p>${trimmed}</p>` : trimmed;
     })
-    .join("");
+    .join("")??"";
 
   // Step 3: Add Tailwind styling to specific tags
   return withParagraphs

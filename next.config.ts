@@ -51,6 +51,11 @@ const nextConfig = {
       },
 
       {
+        source: "/en",
+        destination: "/en/courses",
+        permanent: false,
+      },
+      {
         source: "/bn",
         destination: "/bn/courses",
         permanent: false,
