@@ -1,14 +1,9 @@
-import { Metadata } from "next";
 import CourseCard from "@/components/ui/CourseCard";
 import Heading from "@/components/common/Heading";
 import Paragraph from "@/components/common/Paragraph";
 import { getAllProducts } from "../../lib/api/products";
-
-interface Props {
-  params: {
-    lang: "en" | "bn";
-  };
-}
+import { Metadata } from "next";
+import { Product } from "@/types/product";
 
 type ApiError = Error & {
   status?: number;
@@ -34,14 +29,19 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function CoursesPage({ params }: Props) {
+export default async function CoursesPage({
+  params: paramsPromise,
+}: {
+  params: Promise<{ lang: "en" | "bn" }>;
+}) {
+  const { lang } = await paramsPromise;
+
   try {
-    const response = await getAllProducts(params?.lang);
+    const response = await getAllProducts(lang);
     const products = response?.data?.products || [];
 
     return (
       <section className="min-h-screen w-full bg-[#020617] relative">
-        
         <div
           className="absolute inset-0 z-0"
           style={{
@@ -56,12 +56,12 @@ export default async function CoursesPage({ params }: Props) {
               as="h1"
               className="text-4xl lg:text-7xl font-bold text-white mb-4"
             >
-              {params.lang === "bn"
+              {lang === "bn"
                 ? "আপনার শিক্ষার যাত্রা শুরু করুন"
                 : "Start Your Learning Journey"}
             </Heading>
             <Paragraph className="text-xl text-gray-300 max-w-3xl mx-auto">
-              {params.lang === "bn"
+              {lang === "bn"
                 ? "১০ মিনিট স্কুলের সাথে দক্ষতা অর্জন করুন এবং আপনার ক্যারিয়ারকে নতুন উচ্চতায় নিয়ে যান"
                 : "Gain skills with 10Minute School and take your career to new heights"}
             </Paragraph>
@@ -70,23 +70,21 @@ export default async function CoursesPage({ params }: Props) {
           {/* Courses Grid */}
           <div className="mb-12">
             <Heading as="h2" className="text-2xl font-bold text-white mb-8">
-              {params.lang === "bn" ? "সমস্ত কোর্স" : "All Courses"}
+              {lang === "bn" ? "সমস্ত কোর্স" : "All Courses"}
             </Heading>
 
             {products.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {products.map((product) => (
-                  <CourseCard
-                    key={product.id}
-                    product={product}
-                    lang={params.lang}
-                  />
+                {products.map((product: Product) => (
+                  <div key={product.id}>
+                    <CourseCard product={product} lang={lang} />
+                  </div>
                 ))}
               </div>
             ) : (
               <div className="text-center py-12">
                 <Paragraph className="text-gray-400">
-                  {params.lang === "bn"
+                  {lang === "bn"
                     ? "কোন কোর্স পাওয়া যায়নি"
                     : "No courses found"}
                 </Paragraph>
@@ -110,7 +108,7 @@ export default async function CoursesPage({ params }: Props) {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
           <Heading as="h1" className="text-3xl font-bold text-red-500 mb-4">
-            {params.lang === "bn"
+            {lang === "bn"
               ? "কোর্স লোড করতে সমস্যা হয়েছে"
               : "Failed to load courses"}
           </Heading>
@@ -118,13 +116,13 @@ export default async function CoursesPage({ params }: Props) {
           <Paragraph className="text-gray-300 mb-6">
             {apiError.status
               ? `${apiError.status}: ${apiError.statusText || "API Error"}`
-              : params.lang === "bn"
+              : lang === "bn"
               ? "নেটওয়ার্ক সমস্যা হয়েছে"
               : "Network error occurred"}
           </Paragraph>
 
           <Paragraph className="text-gray-400">
-            {params.lang === "bn"
+            {lang === "bn"
               ? "দয়া করে পরে আবার চেষ্টা করুন"
               : "Please try again later"}
           </Paragraph>
