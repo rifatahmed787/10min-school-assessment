@@ -3,7 +3,7 @@ import React from "react";
 interface ParagraphProps {
   children: React.ReactNode;
   variant?: "default" | "muted" | "highlight";
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "xl";
   className?: string;
   position?:"left" | "right" | "center"
 }
@@ -33,6 +33,7 @@ const Paragraph: React.FC<ParagraphProps> = ({
     sm: "text-sm md:text-base",
     md: "text-base md:text-lg",
     lg: "text-lg md:text-xl",
+    xl:"text-xl md:text-3xl"
   };
 
   return (

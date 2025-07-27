@@ -7,11 +7,11 @@ import { notFound } from "next/navigation";
 import React from "react";
 
 const CourseDetails = async ({
-  params: paramsPromise,
+  params,
 }: {
-  params: Promise<{ slug: string; lang: "en" | "bn" }>;
+  params: { slug: string; lang: "en" | "bn" };
 }) => {
-  const { slug, lang = "en" } = await paramsPromise;
+  const { slug, lang = "en" } = params;
 
   if (!slug) {
     notFound();
@@ -19,13 +19,11 @@ const CourseDetails = async ({
 
   try {
     const product = await getProductBySlug(slug, lang);
-
     const productData = product.data;
     const seoData = productData.seo;
 
     return (
       <PageWrapper>
-        {/* SEO Head with dynamic product data */}
         <SeoHead
           title={seoData.title}
           description={seoData.description}
@@ -36,8 +34,22 @@ const CourseDetails = async ({
           }
           lang={lang}
         />
-        <div>
-          <DetailsHero product={productData} lang={lang} />
+
+        <div className="grid grid-cols-12 gap-5 py-5 container mx-auto">
+          {/* Left Column */}
+          <div className="col-span-12 lg:col-span-7 space-y-8">
+            {/* Title & Description */}
+            <DetailsHero
+              title={productData.title}
+              description={productData.description}
+              lang={lang}
+            />
+          </div>
+
+          {/* Right Column - Sticky Sidebar */}
+          <div className="col-span-12 lg:col-span-5">
+           
+          </div>
         </div>
       </PageWrapper>
     );

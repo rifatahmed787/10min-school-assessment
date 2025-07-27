@@ -1,15 +1,15 @@
-import { Product } from '@/types/product';
+
 import React from 'react'
 
 interface Props {
-  product: Product;
+  title: string;
   lang: "en" | "bn";
 }
-const DetailsHero = ({ product, lang }: Props) => {
-    console.log(product, lang)
+const DetailsHero = ({ title, lang }: Props) => {
+  
   return (
     <div>
-      <h1>{product.title}</h1>
+      <h1>{title}</h1>
     </div>
   )
 }
