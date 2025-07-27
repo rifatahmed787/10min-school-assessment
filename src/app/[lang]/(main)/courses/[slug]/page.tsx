@@ -1,6 +1,7 @@
 import { getProductBySlug } from "@/app/[lang]/lib/api/products";
 import PageWrapper from "@/components/common/PageWrapper";
 import SeoHead from "@/components/common/SeoHead";
+import CourseChecklist from "@/components/pages/CourseDetails/CourseChecklist";
 import CTAGroup from "@/components/pages/CourseDetails/CTAGroup";
 import DetailsHero from "@/components/pages/CourseDetails/DetailsHero";
 import Trailor from "@/components/pages/CourseDetails/Trailor";
@@ -39,7 +40,7 @@ const CourseDetails = async ({
 
         <div className="grid grid-cols-12 gap-5 py-5 container mx-auto">
           {/* Left Column */}
-          <div className="col-span-12 lg:col-span-7 space-y-8 min-h-[120vh]">
+          <div className="col-span-12 lg:col-span-7 space-y-8 min-h-[220vh]">
             {/* Title & Description */}
             <DetailsHero
               title={productData.title}
@@ -59,6 +60,10 @@ const CourseDetails = async ({
                 ctaGroup={productData.secondary_cta_group}
                 lang={lang}
               />
+
+              {/* check lists */}
+              {/* Checklist */}
+              <CourseChecklist items={productData.checklist} lang={lang} />
             </div>
           </div>
         </div>

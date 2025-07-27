@@ -22,7 +22,7 @@ interface CTAGroupsProps {
 
 const CTAGroup: FC<CTAGroupsProps> = ({ ctaText, ctaGroup, lang }) => {
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 mt-5">
       {/* Primary CTA */}
       <CTAButton 
         text={ctaText.name} 
