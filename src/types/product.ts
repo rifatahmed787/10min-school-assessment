@@ -12,6 +12,7 @@ export interface Section {
 
 export interface SectionItem {
   id?: string;
+  name:string;
   title: string;
   description: string;
   text?: string;       

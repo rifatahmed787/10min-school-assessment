@@ -6,6 +6,7 @@ import CourseDescription from "@/components/pages/CourseDetails/CourseDescriptio
 import CourseFeatures from "@/components/pages/CourseDetails/CourseFeatures";
 import CourseInstructors from "@/components/pages/CourseDetails/CourseInstructors";
 import CourseLayout from "@/components/pages/CourseDetails/CourseLayout";
+import CourseShortDescription from "@/components/pages/CourseDetails/CourseShortDescription";
 import CTAGroup from "@/components/pages/CourseDetails/CTAGroup";
 import DetailsHero from "@/components/pages/CourseDetails/DetailsHero";
 import LearningOutcomes from "@/components/pages/CourseDetails/LearningOutcomes";
@@ -34,6 +35,7 @@ const CourseDetails = async ({
 
   try {
     const product = await getProductBySlug(slug, lang);
+    
     const productData = product.data;
     const seoData = productData.seo;
 
@@ -62,7 +64,8 @@ const CourseDetails = async ({
             {/* Title */}
             <DetailsHero title={productData.title} lang={lang} />
             
-               {/* Instructors */}
+            <CourseShortDescription details={productData?.description} lang={lang}/>
+           
             <CourseInstructors 
               instructors={instructorsSection?.values || []} 
               lang={lang}

@@ -5,27 +5,37 @@ import { InstructorsSection } from "@/types/section";
 import { FC } from "react";
 
 interface CourseInstructorsProps {
-  features: InstructorsSection['values'];
+  instructors: InstructorsSection["values"];
   lang: Language;
 }
 
-const CourseInstructors:FC<CourseInstructorsProps> = ({ instructors, lang }) => (
-  <div className="space-y-4">
-    <Heading as="h2" variant="highlight">
-      {lang === 'bn' ? 'প্রশিক্ষকগণ' : 'Instructors'}
-    </Heading>
-    <div className="grid grid-cols-2 gap-4">
-      {instructors?.map((instructor, index) => (
-        <div key={index} className="flex items-center space-x-3">
-          <div className="w-12 h-12 rounded-full bg-gray-200"></div>
-          <div>
-            <Paragraph size="sm" className="font-bold">{instructor.name}</Paragraph>
-            <Paragraph size="xs" className="text-gray-600">{instructor.title}</Paragraph>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-);
+const CourseInstructors: FC<CourseInstructorsProps> = ({
+  instructors,
+  lang,
+}) => {
 
-export default CourseInstructors
+  return (
+    <div className="space-y-4">
+      <Heading as="h2" variant="highlight">
+        {lang === "bn" ? "প্রশিক্ষকগণ" : "Instructors"}
+      </Heading>
+      <div className="grid grid-cols-2 gap-4">
+        {instructors?.map((instructor, index) => (
+          <div key={index} className="flex items-center space-x-3">
+            <div className="w-12 h-12 rounded-full bg-gray-200"></div>
+            <div>
+              <Paragraph size="sm" className="font-bold">
+                {instructor?.name}
+              </Paragraph>
+              <Paragraph size="xs" className="text-gray-600">
+                {instructor?.title}
+              </Paragraph>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default CourseInstructors;

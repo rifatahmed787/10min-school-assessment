@@ -2,9 +2,11 @@
 import { Section } from './product';
 
 export type InstructorsSection = Section & {
-  type: 'pointers';
+  type: 'instructors';
   values: Array<{
-    text: string;
+    name: string;
+    title: string;
+    description: string;
     icon?: string;
   }>;
 };
