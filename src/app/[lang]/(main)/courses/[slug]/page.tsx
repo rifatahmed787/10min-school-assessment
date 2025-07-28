@@ -1,6 +1,7 @@
 import { getProductBySlug } from "@/app/[lang]/lib/api/products";
 import PageWrapper from "@/components/common/PageWrapper";
 import SeoHead from "@/components/common/SeoHead";
+import CourseAccordion from "@/components/pages/CourseDetails/CourseAccordion";
 import CourseChecklist from "@/components/pages/CourseDetails/CourseChecklist";
 import CourseDescription from "@/components/pages/CourseDetails/CourseDescription";
 import CourseFeatures from "@/components/pages/CourseDetails/CourseFeatures";
@@ -13,6 +14,7 @@ import LearningOutcomes from "@/components/pages/CourseDetails/LearningOutcomes"
 import Trailor from "@/components/pages/CourseDetails/Trailor";
 import {
   isAboutSection,
+  isAccordionSection,
   isFeaturesExplanationsSection,
   isFeaturesSection,
   isInstructorsSection,
@@ -23,11 +25,11 @@ import { notFound } from "next/navigation";
 import React from "react";
 
 const CourseDetails = async ({
-  params,
+  params: paramsPromise,
 }: {
-  params: { slug: string; lang: "en" | "bn" };
+  params: Promise<{ slug: string; lang: "en" | "bn" }>;
 }) => {
-  const { slug, lang = "en" } = params;
+  const { slug, lang = "en" } = await paramsPromise;
 
   if (!slug) {
     notFound();
@@ -46,6 +48,7 @@ const CourseDetails = async ({
       isFeaturesExplanationsSection
     );
     const aboutSection = productData?.sections.find(isAboutSection);
+    const accordionSection = productData?.sections.find(isAccordionSection);
 
     return (
       <PageWrapper>
@@ -67,7 +70,6 @@ const CourseDetails = async ({
         <div className="grid grid-cols-12 gap-5 py-5 container mx-auto">
           {/* Left Column */}
           <div className="col-span-12 lg:col-span-7 space-y-8">
-            {/* Title */}
             <DetailsHero title={productData.title} lang={lang} />
 
             <CourseShortDescription
@@ -80,7 +82,6 @@ const CourseDetails = async ({
               lang={lang}
             />
 
-            {/* How the course is laid out */}
             <CourseLayout
               features={featuresSection?.values || []}
               lang={lang}
@@ -100,6 +101,10 @@ const CourseDetails = async ({
               details={aboutSection?.values || []}
               lang={lang}
             />
+           <CourseAccordion
+  accordion={accordionSection || { type: 'faq', name: '', values: [] }}
+  lang={lang}
+/>
           </div>
 
           {/* Right Column - Sticky Sidebar */}
@@ -107,14 +112,12 @@ const CourseDetails = async ({
             <div className="sticky top-20">
               <Trailor lang={lang} />
 
-              {/* CTA Button */}
               <CTAGroup
                 ctaText={productData.cta_text}
                 ctaGroup={productData.secondary_cta_group}
                 lang={lang}
               />
 
-              {/* Checklist */}
               <CourseChecklist items={productData.checklist} lang={lang} />
             </div>
           </div>

@@ -19,6 +19,8 @@ export interface SectionItem {
   icon?: string;       
   resource_type?: string;
   resource_value?: string;
+  question:string;
+  answer:string;
 }
 
 interface MediaItem {

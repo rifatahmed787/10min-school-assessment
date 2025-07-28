@@ -10,6 +10,15 @@ export type InstructorsSection = Section & {
     icon?: string;
   }>;
 };
+export type AccordionSection = Section & {
+  type: 'faq';
+  name:string;
+  values: Array<{
+    id:string;
+    question:string;
+    answer:string;
+  }>;
+};
 export type PointersSection = Section & {
   type: 'pointers';
   values: Array<{
@@ -62,4 +71,7 @@ export function isFeaturesExplanationsSection(section: Section): section is Feat
 
 export function isAboutSection(section: Section): section is AboutSection {
   return section.type === 'about';
+}
+export function isAccordionSection(section: Section): section is AccordionSection {
+  return section.type === 'faq';
 }

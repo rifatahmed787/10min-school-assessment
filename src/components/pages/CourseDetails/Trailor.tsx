@@ -7,7 +7,7 @@ interface TrailorProps {
 }
 const Trailor: FC<TrailorProps> = ({ lang }) => {
   return (
-    <div className="space-y-6 p-6 bg-white rounded-lg shadow-md">
+    <div className="space-y-6 p-6 bg-white dark:bg-background dark:border rounded-lg shadow-md">
       <Heading variant="default" as="h3">
         {lang === "bn" ? "কোর্স বিবরণ" : "Course Details"}
       </Heading>

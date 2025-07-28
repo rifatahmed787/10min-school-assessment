@@ -20,12 +20,12 @@ const CourseLayout: FC<CourseFeaturesProps> = ({ features, lang }) => {
         {features.map((feature, index) => (
           <div
             key={`${feature.title}-${index}`}
-            className=" bg-gray-50 rounded-lg"
+            className=" bg-gray-50 dark:bg-background dark:border rounded-lg"
           >
-            <Paragraph size="sm" className="font-bold">
+            <Paragraph size="sm" className="font-bold dark:px-2">
               {feature.title}
             </Paragraph>
-            <Paragraph size="xs" className="text-gray-600">
+            <Paragraph size="xs" className="text-gray-600 dark:text-gray-300">
               {feature.description}
             </Paragraph>
           </div>

@@ -271,54 +271,108 @@ body {
   }
 }
 
-/* Add to your globals.css */
-.prose-html {
-  line-height: 1.6;
+ul li p,
+td p {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
 }
 
-.prose-html p {
-  @apply mb-4 text-base leading-relaxed text-gray-700;
+/* Reduce margin/padding for list items */
+.ProseMirror ul, 
+.ProseMirror ol {
+  padding: 0.2rem 0; /* Adjust as needed */
+  margin: 0.2rem 0;  /* Adjust as needed */
 }
 
-.prose-html strong {
-  @apply font-semibold text-gray-800;
+.ProseMirror li {
+  margin: 0.1rem 0;  /* Reduce vertical margin between list items */
+  padding: 0.1rem 0; /* Reduce vertical padding between list items */
 }
 
-.prose-html em {
-  @apply italic;
+/* Remove the default max-width from ProseMirror */
+.ProseMirror {
+  width: 100%;
+  min-height: 300px;
+  padding: 1rem;
+  border: none;
+  outline: none;
 }
 
-.prose-html ul {
-  @apply list-disc pl-5 mb-4;
+/* Remove the prose max-width constraints */
+.prose {
+  max-width: 100% !important;
 }
 
-.prose-html ol {
-  @apply list-decimal pl-5 mb-4;
+/* Make sure tables expand to full width */
+.ProseMirror table {
+  width: 100% !important;
 }
 
-.prose-html li {
-  @apply mb-2;
+/* Editor content container */
+.editor-content-container {
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+}
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Or your desired height */
+  max-width: 100%; /* Adjust as needed */
+  margin: 0 auto;
 }
 
-.prose-html h1, 
-.prose-html h2, 
-.prose-html h3, 
-.prose-html h4 {
-  @apply font-bold text-gray-900;
+/* Image alignment styles */
+/* In your global CSS */
+.ProseMirror img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-.prose-html h1 {
-  @apply text-2xl mb-2;
+.ProseMirror img[data-width="25%"] { 
+  width: 25% !important;
+  max-width: 25%;
 }
 
-.prose-html h2 {
-  @apply text-xl mb-2;
+.ProseMirror img[data-width="50%"] { 
+  width: 50% !important;
+  max-width: 50%;
 }
 
-.prose-html h3 {
-  @apply text-lg mb-2;
+.ProseMirror img[data-width="75%"] { 
+  width: 75% !important;
+  max-width: 75%;
 }
 
-.prose-html h4 {
-  @apply text-base mb-2;
+.ProseMirror img[data-align="left"] {
+  float: left;
+  margin: 0 1em 1em 0;
 }
+
+.ProseMirror img[data-align="right"] {
+  float: right;
+  margin: 0 0 1em 1em;
+}
+
+.ProseMirror img[data-align="center"],
+.ProseMirror img:not([data-align]) {
+  display: block;
+  margin: 0 auto 1em;
+}
+/* Force width to be applied */
+.ProseMirror img[data-width="25%"] { width: 25% !important; }
+.ProseMirror img[data-width="50%"] { width: 50% !important; }
+.ProseMirror img[data-width="75%"] { width: 75% !important; }
+.ProseMirror img[data-width="100%"] { width: 100% !important; }
+.ProseMirror img[data-width="auto"] { width: auto !important; }
+
+/* Clear floats */
+.ProseMirror p:after,
+.ProseMirror div:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+

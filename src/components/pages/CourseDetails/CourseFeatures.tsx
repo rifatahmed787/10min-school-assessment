@@ -18,7 +18,7 @@ const CourseFeatures: FC<CourseFeaturesProps> = ({ features, lang }) => {
       </Heading>
       <div className="space-y-3 p-4">
         {features.map((feature, index) => (
-          <div key={`${feature.title}-${index}`} className=" bg-gray-50 rounded-lg">
+          <div key={`${feature.title}-${index}`} className=" bg-gray-50 dark:bg-background dark:border rounded-lg">
             <Paragraph size="sm" className="font-bold">{feature.title}</Paragraph>
             <Paragraph size="xs" className="text-gray-600">{feature.description}</Paragraph>
           </div>
