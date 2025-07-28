@@ -82,6 +82,8 @@ export default {
       animation: {
         "slide-in": "slide-in 0.5s forwards",
         "slide-out": "slide-out 0.5s forwards",
+        "blob": "blob 7s infinite",
+        "fadeInUp": "fadeInUp 0.5s ease-out forwards"
       },
       keyframes: {
         "slide-in": {
@@ -101,6 +103,7 @@ export default {
           },
         },
       },
+    
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

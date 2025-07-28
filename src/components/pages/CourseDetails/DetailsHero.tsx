@@ -1,17 +1,19 @@
-import { Product } from '@/types/product';
-import React from 'react'
+import Heading from '@/components/common/Heading';
+import React from 'react';
 
 interface Props {
-  product: Product;
-  lang: "en" | "bn";
-}
-const DetailsHero = ({ product, lang }: Props) => {
-    console.log(product, lang)
-  return (
-    <div>
-      <h1>{product.title}</h1>
-    </div>
-  )
+  title: string;
+  lang: 'en' | 'bn';
 }
 
-export default DetailsHero
+const DetailsHero = ({ title, lang }: Props) => {
+  return (
+    <div lang={lang}>
+      <Heading as='h1' variant='highlight'>
+        {title}
+      </Heading>
+    </div>
+  );
+};
+
+export default DetailsHero;

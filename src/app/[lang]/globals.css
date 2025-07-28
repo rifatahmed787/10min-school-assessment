@@ -271,3 +271,108 @@ body {
   }
 }
 
+ul li p,
+td p {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Reduce margin/padding for list items */
+.ProseMirror ul, 
+.ProseMirror ol {
+  padding: 0.2rem 0; /* Adjust as needed */
+  margin: 0.2rem 0;  /* Adjust as needed */
+}
+
+.ProseMirror li {
+  margin: 0.1rem 0;  /* Reduce vertical margin between list items */
+  padding: 0.1rem 0; /* Reduce vertical padding between list items */
+}
+
+/* Remove the default max-width from ProseMirror */
+.ProseMirror {
+  width: 100%;
+  min-height: 300px;
+  padding: 1rem;
+  border: none;
+  outline: none;
+}
+
+/* Remove the prose max-width constraints */
+.prose {
+  max-width: 100% !important;
+}
+
+/* Make sure tables expand to full width */
+.ProseMirror table {
+  width: 100% !important;
+}
+
+/* Editor content container */
+.editor-content-container {
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+}
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Or your desired height */
+  max-width: 100%; /* Adjust as needed */
+  margin: 0 auto;
+}
+
+/* Image alignment styles */
+/* In your global CSS */
+.ProseMirror img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ProseMirror img[data-width="25%"] { 
+  width: 25% !important;
+  max-width: 25%;
+}
+
+.ProseMirror img[data-width="50%"] { 
+  width: 50% !important;
+  max-width: 50%;
+}
+
+.ProseMirror img[data-width="75%"] { 
+  width: 75% !important;
+  max-width: 75%;
+}
+
+.ProseMirror img[data-align="left"] {
+  float: left;
+  margin: 0 1em 1em 0;
+}
+
+.ProseMirror img[data-align="right"] {
+  float: right;
+  margin: 0 0 1em 1em;
+}
+
+.ProseMirror img[data-align="center"],
+.ProseMirror img:not([data-align]) {
+  display: block;
+  margin: 0 auto 1em;
+}
+/* Force width to be applied */
+.ProseMirror img[data-width="25%"] { width: 25% !important; }
+.ProseMirror img[data-width="50%"] { width: 50% !important; }
+.ProseMirror img[data-width="75%"] { width: 75% !important; }
+.ProseMirror img[data-width="100%"] { width: 100% !important; }
+.ProseMirror img[data-width="auto"] { width: auto !important; }
+
+/* Clear floats */
+.ProseMirror p:after,
+.ProseMirror div:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+

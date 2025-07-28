@@ -1,3 +1,28 @@
+
+export type Language = 'en' | 'bn';
+
+export interface Section {
+  type: string;
+  name: string;
+  description: string;
+  bg_color?: string;
+  order_idx: number;
+  values: SectionItem[];
+}
+
+export interface SectionItem {
+  id?: string;
+  name:string;
+  title: string;
+  description: string;
+  text?: string;       
+  icon?: string;       
+  resource_type?: string;
+  resource_value?: string;
+  question:string;
+  answer:string;
+}
+
 interface MediaItem {
   name: string;
   resource_type: string;
@@ -14,4 +39,5 @@ export interface Product {
   price_details?: {
     text?: string;
   };
+  sections: Section[];
 }
